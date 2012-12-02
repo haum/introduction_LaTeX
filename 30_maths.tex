@@ -1,0 +1,36 @@
+\section{Maths} % (fold)
+\label{sec:Maths}
+
+Bien entendu (et tout le monde s'accorde là-dessus) la puissance de \LaTeX, ce sont les maths !
+
+Les maths peuvent apparaître dans 2 contextes : {\it inline } ou en formule séparée.
+
+Si par exemple vous souhaitez, au beau milieu d'une ligne, écrire que $f(x) = 42x - \frac{22}{7}$, alors vous êtes en {\it inline}.
+Par contre, vous pouvez tout aussi bien vouloir écrire dans une jolie formule que $$f(x) = 42x - \frac{22}{7}$$
+
+Ce qui pourrait aussi être ainsi :
+\begin{equation}
+f(x) = 42x - \frac{22}{7}
+\end{equation}
+
+Je pourrais vous sortir tout un bouquin sur la manière d'inclure des maths... je peux aussi me contenter de vous donner le code des précédents paragraphes :
+
+\begin{verbatim}
+Si par exemple vous souhaitez, au beau milieu d'une ligne, 
+écrire que $f(x) = 42x - \frac{22}{7}$, alors vous êtes en {\it inline}.
+Par contre, vous pouvez tout aussi bien vouloir écrire dans
+une jolie formule que $$f(x) = 42x - \frac{22}{7}$$
+
+Ce qui pourrait aussi être ainsi :
+\begin{equation}
+f(x) = 42x - \frac{22}{7}
+\end{equation}
+\end{verbatim}
+
+Sachez quand même qu'il existe d'autre moyens d'inclure des maths, un des plus intéressant est l'environnement {\verb eqnarray }. Sont nom est évocateur : il s'agit d'un tableau d'équation(s).
+
+En effet, le principal désavantage de l'environnement {\verb equation }, c'est qu'il ne supporte pas plusieurs lignes de calcul... {\verb eqnarray } remédie à ça et permet d'aligner les lignes sur le symbole central.
+
+En fait, {\verb eqnarray } {\bf est } un tableau de 3 colonnes.
+
+% section Maths (end)

@@ -1,0 +1,125 @@
+\section{Utilisation plus approfondie} % (fold)
+\label{sec:Utilisation plus approfondie}
+
+Dans cette partie, nous allons voir comment ajouter :
+\begin{itemize}
+    \item Des tableaux
+    \item Une table des matières
+    \item Des images
+    \item etc...
+\end{itemize}
+
+\subsection{Tableaux} % (fold)
+\label{sub:Tableaux}
+
+    Les tableaux en \LaTeX sont parfois complexes (et on appréciera de trouver des {\it softs } nous assistant pour leur création).
+    Il est toutefois bon de savoir faire car il sont très souvent utiles (pour ne pas dire indispensables) et permmettent entre autres la mise en page de tableaux de variations et autres listes....
+
+L'environnement à utiliser pour la création de tableaux est l'environnement... {\verb tabular } (oh surprise....).
+
+Travaillons sur un exemple :
+    
+    \begin{tabular}{|c||r|}\hline
+        {\bf Type} & {\bf Distros/Versions}\\\hline
+        Linux & Debian, Ubuntu, Fedora, ArchLinux, etc... \\\hline
+        Windows & NT/2000, XP, Vista, Seven, etc... \\\hline
+        MacOS & Leopard, SnowLeopard, Lion, etc...\\\hline
+    \end{tabular}
+
+    \begin{verbatim}
+\begin{tabular}{|c||r|}\hline
+{\bf Type} & {\bf Distros/Versions}\\\hline
+Linux & Debian, Ubuntu, Fedora, ArchLinux, etc... \\\hline
+Windows & NT/2000, XP, Vista, Seven, etc... \\\hline
+MacOS & Leopard, SnowLeopard, Lion, etc...\\\hline
+\end{tabular}
+    \end{verbatim}
+
+    On remarque que les colonnes et leur alignement sont définies immédiatement après l'appel de l'environnement :
+    \begin{description}
+        \item[l] Aligné à Gauche
+        \item[c] Centré
+        \item[r] Aligné à Droite
+    \end{description}
+
+    On note aussi que les bordures verticales sont spécifiées à ce moment là (par le {\it pipe } : {\verb | }).
+
+    La séparation entre deux colonnes d'une même ligne se fait grâce au symbole {\verb & } et le changement de ligne se fait comme dans du texte classique avec un double backslash.
+
+    Pour faire apparaître un filet horizontal entre deux lignes, on utilise la commande {\verb \hline }.
+
+    Sachez qu'il existe un module pour gérer les tableaux longs.
+    
+    Il est aussi possible d'initialiser des tableaux en spécifiant une taille fixe pour les colonnes.
+    Dans la déclaration du tableau on utilise alors {\verb p } suivi d'une  taille.
+    Voilà comment on déclarerait un tableau dont la deuxième colonne est fixe à 7cm :
+    \begin{verbatim}
+        \begin{tabular}{|c|p{7cm}|}
+            % contenu ....
+        \end{tabular}
+    \end{verbatim}
+
+    Il existe aussi des commandes pour {\it fusionner } des cellules (horizontalement et verticalement).
+    Exemple avec une fusion horizontale (la plus courante) : 
+    
+    \begin{tabular}{|c||r|c|}\hline
+        {\bf Type} & \multicolumn{2}{c|}{{\bf Distros/Versions}}\\\hline
+        Linux & Debian, Ubuntu, Fedora, ArchLinux, etc... & lol\\\hline
+        Windows & NT/2000, XP, Vista, Seven, etc... & lol\\\hline
+        MacOS & Leopard, SnowLeopard, Lion, etc...& lol\\\hline
+    \end{tabular}
+    \begin{verbatim}
+\begin{tabular}{|c||r|c|}\hline
+{\bf Type} & \multicolumn{2}{c|}{{\bf Distros/Versions}}\\\hline
+Linux & Debian, Ubuntu, Fedora, ArchLinux, etc... & lol\\\hline
+Windows & NT/2000, XP, Vista, Seven, etc... & lol\\\hline
+MacOS & Leopard, SnowLeopard, Lion, etc...& lol\\\hline
+\end{tabular}
+    \end{verbatim}
+
+    Dans ce tableau (subtil {\it remix} du précédent), on utilise la commande {\verb multicolumn } pour fusionner les 2 dernières cellules de la première ligne.
+    Voilà la syntaxe de la commande :
+    \begin{verbatim}
+\multicolumn{nb de colonnes}{alignement et bordures}{contenu}
+    \end{verbatim}
+
+    Notez que l'alignement correspond à l'un de ceux cités plus haut (l, c, r, p).
+    Concernant les bordures, celle de gauche est conservée ({\it i.e.} elle appartient à la celulle de gauche) ; celle de droite par contre est à redéfinir.
+
+% subsection Tableaux (end)
+
+\subsection{Table des matières} % (fold)
+\label{sub:Table des matières}
+
+Il peut être utile de pouvoir rajouter facilement une table des matières dans un document.
+Cette possibilité devient plus qu'intéressante lorsque l'on sait que \LaTeX{} gère seul le {\it listing } des titres !
+
+La commande pour placer une table des matières est : 
+
+\begin{verbatim}
+    \tableofcontents
+    \newpage
+\end{verbatim}
+
+Même si seule la première des commandes influe réellement sur la table des matières, la seconde permet de retrouver une mise en page propre (et que le texte ne vienne pas se coller directement à la suite du sommaire).
+
+Notez qu'il est possible de redéfinir la {\it profondeur } de la table des matières.
+
+Cela se fait en modifiant le compteur {\verb tocdepth }\footnote{{\it tocdepth} siginifie {\it table of contents depth} soit {\it profondeur de la table des matières}.} comme ceci :
+\begin{verbatim}
+    \setcounter{tocdepth}{4}
+\end{verbatim}
+
+Dans cet exemple, on passe {\verb tocdepth } à 4 (soit jusqu'au {\verb paragraph }).
+
+L'autre commande {\it über} utile avec les tables de matières est celle qui permet de changer son nom :
+
+\begin{verbatim}
+\renewcommand{\contentsname}{Table des Matières}
+\end{verbatim}
+
+On fait ici passer le nom de la table des matières (normalement en anglais, soit {\it Table Of Contents }) à son équivalent en français : {\it Table des Matières }
+
+% subsection Table des matières (end)
+
+% section Utilisation plus approfondie (end)

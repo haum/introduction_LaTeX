@@ -1,0 +1,100 @@
+\documentclass[a4paper, 11pt, twoside]{report}
+
+    % packages {{{
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \usepackage{lmodern}
+    \usepackage[french]{babel}
+    \usepackage{url}
+    \usepackage[pdfborder=0]{hyperref}
+    \usepackage{graphicx}
+
+    \usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \renewcommand{\headrulewidth}{.4pt}
+    \renewcommand{\footrulewidth}{.4pt}
+    \lhead{HAUM}
+    \chead{Introduction à \LaTeX}
+    \rhead{}
+    \lfoot{\url{https://github.com/haum/introduction_LaTeX}}
+    \cfoot{}
+    \rfoot{\thepage}
+    % }}}
+    % premiere page {{{
+    \makeatletter
+    \def\thickhrulefill{\leavevmode \leaders \hrule height 1pt\hfill \kern \z@}
+    \renewcommand{\maketitle}{\begin{titlepage}%
+    \let\footnotesize\small
+    \let\footnoterule\relax
+    \parindent \z@
+    \reset@font
+    \null\vfil
+    \begin{flushright}
+    \huge \@title
+    \end{flushright}
+    \par
+    \hrule height 5pt
+    \par
+    \begin{flushright}
+    \LARGE \@author \par
+    \Large \@date \par
+    \end{flushright}
+    \vskip 60\p@
+    \vfil\null
+    \end{titlepage}%
+    \setcounter{footnote}{0}%
+    }
+    \makeatother
+
+    \title{Initiation à \LaTeX}
+    \author{L'Internet, le HAUM}
+    \date{2012}
+    % }}}
+    % Table of contents {{{
+    \setcounter{tocdepth}{4}
+    \renewcommand{\contentsname}{Table des Matières}
+    % }}}
+    % Titres {{{
+    \renewcommand{\thesection}{\arabic{section}.}
+    \renewcommand{\thesubsection}{\arabic{section}.\Alph{subsection}.}
+    % }}}
+
+\begin{document}
+    \maketitle
+
+    \tableofcontents
+    \newpage
+    
+    \section*{License et Source} % {{{
+
+    Ce document et ce qui l'accompagne est publié sous license Creative Commons Attribution -  Partage dans les Mêmes Conditions 3.0 France
+    License. Pour une copie de la license et/ou plus d'informations sur celle-ci, visitez
+    \url{http://creativecommons.org/licenses/by-sa/3.0/fr/}.
+
+    \bigskip
+
+    La source de ce document est consultable et hackable sur Github :
+
+    \begin{center}
+    \url{https://github.com/haum/introduction_LaTeX}
+    \end{center}
+
+    \bigskip
+
+    \subsection*{Contributeurs}
+
+    Ils y ont passé du temps, si vous souhaitez aider, faîtes-le et ajoutez vous à cette liste :
+
+    \begin{itemize}
+        \item l'Internet
+        \item les contributeurs à Wikipedia (indirectement)
+        \item Mathieu (matael) Gaborit
+    \end{itemize}
+    % }}}
+    \newpage
+
+    \input{00_presentation.tex}
+    \input{05_installation.tex}
+    \input{10_bases.tex}
+    \input{20_advance.tex} \input{30_maths.tex}
+\end{document}

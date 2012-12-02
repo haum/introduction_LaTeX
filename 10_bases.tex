@@ -1,0 +1,506 @@
+\section{Les bases} % (fold)
+\label{sec:Les bases}
+
+Avant de vous lancer dans l'écriture de votre roman, on va peut être voir un peu les bases non ?
+
+\subsection{Premier document} % (fold)
+\label{sub:Premier document}
+
+Comme premier document, on va utiliser un extrait de Wikipedia (parce que {\itshape Hello World} en \LaTeX, c'est inutile).
+On va donc créer un document reprenant la section {\bfseries Synopsis} de la page sur \underline{Le Guide du Voyageur Galactique}\footnote{La page est consultable à l'adresse suivante : \url{http://fr.wikipedia.org/wiki/Le_Guide_du_voyageur_galactique}}.
+
+Voilà le code, l'explication vient ensuite (et dans les commentaires) :
+
+\begin{verbatim}
+\documentclass[11pt, a4paper]{article}
+% Modules à utiliser
+\usepackage{url}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% Titre
+\title{H2G2 (sur Wikipedia)}
+\author{Douglas Adams}
+\date{1982}
+
+\begin{document}
+    \maketitle % on affiche le titre
+
+Arthur Dent, citoyen anglais moyen, assiste à la destruction de la Terre par
+les Vogons afin de créer une voie express hyperspatiale, et est sauvé par son
+ami Ford Prefect, qui est en fait originaire de Bételgeuse, et qui l'emmène
+avec lui en astrostop à travers la Galaxie.
+Les deux amis sont finalement récupérés par le vaisseau Cœur en Or, volé peu
+de temps auparavant par Zaphod Beeblebrox, président de la galaxie et son
+assistante Trillian.
+
+Pour se guider, ils ont avec eux un exemplaire du Guide du voyageur galactique,
+sorte de guide du routard pour la galaxie, célèbre pour sa phrase de couverture :
+Don't Panic (ou Pas de panique dans la traduction française).
+
+On apprend notamment dans le roman la réponse à la Grande Question sur la Vie,
+l'Univers et le Reste.
+S'amusant de ce que l'existence a finalement d'improbable en soi, l'auteur
+développe ainsi le concept : la probabilité et son infinité de possibles donnent
+lieu a un scénario débridé.
+Mais pas de panique, le Guide est là comme point de repère.
+L’œuvre est traitée avec beaucoup d'originalité, d’intelligence, mais surtout d'humour.
+
+\end{document}
+\end{verbatim}
+
+Expliquons maintenant le code pas à pas.
+
+Notons, avant de commencer que les commentaires sont indiqués par le symbole {\verb % }.
+En \LaTeX, les commentaire sont forcément sur une seule ligne : tout ce qui suit ledit symbole est commentaire.
+
+Tout d'abord, il faut repérer 3 instructions qui défissent 2 zones (zones que nous détaillerons ensuite) :
+
+\begin{verbatim}
+\documentclass[11pt, a4paper]{article}
+
+% ... Préambule
+
+\begin{document}
+
+% .... corps du document
+
+\end{document}
+\end{verbatim}
+
+Le {\bfseries préambule} contient une série de commandes permettant à \LaTeX{} de mettre le document en forme correctement.
+C'est là que l'on spécifie les {\bfseries modules} à inclure, les commandes à (re)définir, etc...
+
+Le {\bfseries corps du document} est entouré par les directives {\verb \begin{document} } et  {\verb \end{document} }.
+C'est à cet endroit que l'on inscrira le contenu de notre document.
+
+Si nous examinions d'un peu plus près la permière ligne : 
+\begin{verbatim}
+\documentclass[11pt, a4paper]{article}
+\end{verbatim}
+
+Le nom de la commande est explicite, cette ligne définie le type de document (sa {\itshape classe} que la commande prend en argument obligatoire.
+{\verb documentclass } prend aussi d'autres options optionnelles (entre crochets). Ici :
+\begin{description}
+    \item[a4paper] On donne le type de papier cible (ici, une feuille A4 standard)
+    \item[11pt] On spécifie ici la taille de police ({\itshape 11 points})
+\end{description}
+
+D'autres arguments existent, d'autre classes aussi :
+\begin{description}
+    \item[article] un article est une publication courte. En général, il ne comprend pas de page de titre et sa hiérarchie de titre commence à la {\verb section } (voir plus bas). 
+    \item[report] il s'agit d'une publication un peu plus longue (voir carrément plus longue). Là, page de titre et tout le toutim, les titres commencent à la {\verb part }.
+    \item[book] là, le nom vous fera comprendre qu'on attaque le sérieusement long. \LaTeX{} gère sans problème des {\itshape books } de plus de 1000 pages... On a la possibilité d'inclure {\verb part }, {\verb chapter } et autres...
+    \item[letter] là encore, le nom de classe est explicite : il s'agit de lettre. certaines options permettent d'éditer des lettres présentés à la française. Notez que des commandes autorisent le remplissage des champs propres à la lettre.
+    \item[beamer] la classe des fameux {\it slideshows}. On y reviendra.
+    \item[] etc...
+\end{description}
+
+\subsubsection{Préambule} % (fold)
+\label{ssub:Préambule}
+
+    Comme dit plus haut, le préambule, c'est la {\itshape configuration } propre à ce document.
+
+    Il contient plusieurs types d'instructions, voici les trois principaux :
+    \begin{itemize}
+        \item Les modules à inclure
+        \item Les options de contenu (titre, date, auteur, etc...)
+        \item Les (re)définitions de commandes
+    \end{itemize}
+
+\begin{verbatim}
+
+%%% Modules à utiliser %%%
+    % indique que le doc est en français 
+    % (prise en compte de conventions typographiques)
+\usepackage[french]{babel}
+    % indique que l'on utilise des fontes (polices) comptatibles T1
+\usepackage[T1]{fontenc}
+    % indique le charset d'entrée (i.e. l'encodage), ici : unicode
+\usepackage[utf8]{inputenc}
+    % nous permet d'utiliser la commande \url{}
+\usepackage{url}
+
+%%%  Titre %%%
+\title{H2G2 (sur Wikipedia)} % titre
+\author{Douglas Adams}       % auteur
+\date{1982}                  % date
+\end{verbatim}
+
+\paragraph{Les modules} % (fold)
+\label{par:Les modules}
+
+Les modules, ou {\it packages } dans la langue de Shakespeare, sont des ensemble de commandes permettant d'étendre le jeu de base.
+Certains définissent des options pour le document (son encodage, les polices utilisées, etc...).
+
+La commande pour l'inclusion de modules est de la forme :
+
+\begin{verbatim}
+    \usepackage[arguments optionnels]{nom du paquet}
+\end{verbatim}
+
+% paragraph Les modules (end)
+
+\paragraph{Les commandes de contenu} % (fold)
+\label{par:Les commandes de contenu}
+
+Pour l'instant, nous n'avons vu que le titre. Sachez juste que, après le {\verb \begin{document} }, le titre est inlus grace à la commande : 
+\begin{verbatim}
+    \maketitle
+\end{verbatim}
+% paragraph Les commandes de contenu (end)
+
+\paragraph{Les (re)définitions de commandes} % (fold)
+\label{par:Les (re)définitions de commandes}
+
+Ces commandes permettent de changer le comportement de certaines commandes voire d'en ajouter.
+Ces instructions sont de la forme :
+
+\begin{verbatim}
+    % définition
+    \newcommand{nouvelle commande}{effet}
+
+    % redéfinition
+    \renewcommand{commandeà modifier}{nouvel effet}
+\end{verbatim}
+
+Il existe des formes plus poussées, mais nous y reviendrons plus tard.
+% paragraph Les (re)définitions de commandes (end)
+
+% subsubsection Préambule (end)
+
+\subsubsection{Corps du document} % (fold)
+\label{ssub:Corps du document}
+
+Dans un document \LaTeX, il n'y a aucun marquage particulier autour des paragraphes.
+Tapez tout simplement le texte à la suite (pas forcément sur une même ligne, mais sans ligne vide), lorsque vous voudrez rompre le paragraphe courant, passez une ligne.
+
+Il y a par contre un moyen de forcer le retour à la ligne {\bf sans changement de paragraphe} : ajouter 2 backslashes en à l'endroit de la césure. Exemple :
+
+\begin{verbatim}
+    Ceci est une ligne\\
+    que je souhaite couper sans changer de paragraphe.
+
+    Voici un nouveau paragraphe.
+\end{verbatim}
+
+Sachez aussi que \LaTeX{} se charge de la césure des mots automatiquement (et rajoute le trait d'union requis).
+
+
+% subsubsection Corps du document (end)
+
+% subsection Premier document (end)
+
+\subsection{Ajouter un titre} % (fold)
+\label{sub:Ajouter un titre}
+
+Bon, là, j'ai un peu spoilé...
+
+L'ajout d'un titre se fait via l'utilisation des commandes suivantes :
+
+\begin{verbatim}
+    \title{}
+    \author{}
+    \date{}
+    % ...
+    \maketitle
+\end{verbatim}
+
+Bien entendu, vous mettez ce que vous voulez ! Rien ne vous force à réellement mettre un nom d'auteur dans le champs {\verb author }.
+
+Notez par contre que si la commande {\verb date } n'est pas appellée, \LaTeX rempli le champs en question avec la date courante. Si vous ne voulez pas de date, il suffit d'appeller la commande sans rien donner en argument :
+
+\begin{verbatim}
+    \date{}
+\end{verbatim}
+
+% subsection Ajouter un titre (end)
+
+\subsection{Titres} % (fold)
+\label{sub:Titres}
+
+Bien entendu, certaines commandes permettent d'ajouter des titres. Sachez qu'ils sont {\bf automatiquement} numérotés, cette numérotation est d'ailleurs supprimable en suffixant le type de titre avec un astérisque ({\verb * }).
+
+La hierarchie des titres les plus utilisés est la suivante :
+
+\begin{enumerate}
+    \item part
+    \item chapter
+    \item section
+    \item subsection
+    \item subsubsection
+    \item paragraph
+\end{enumerate}
+
+Sachez aussi qu'il est possible de redéfinir la numérotation des titres avec les commandes
+
+% subsection Titres (end)
+
+\subsection{Mise en forme particulière} % (fold)
+\label{sub:Mise en forme particulière}
+
+Bon... on va pas commencer à utiliser {\bf sérieusement} un composeur de documents qui ne permet pas de mettre le texte en gras, en italique, de le souligner, etc...
+De même, c'est plutôt utile de pouvoir l'ajuster à droite, à gauche ou au centre...
+
+Voyons tout ça un peu plus en détail.
+
+\subsubsection{Agissons sur la fonte} % (fold)
+\label{ssub:Agissons sur la fonte}
+
+Différente variantes de fonte existent, nous n'allons pas les détailler.
+
+En effet, cette page recense largement assez de variantes pour que je ne m'embète pas à les recopier et à refaire le tableau :
+
+\begin{center}
+    \url{http://www.siteduzero.com/tutoriel-3-267238-les-polices.html}
+\end{center}
+
+Cette page met aussi en avant des fonctionnalités de changement de police et de couleur.
+Elle est mieux faite que ce que j'aurais pu faire moi même et ne contient aucune erreur (du moins, j'en ai pas vu).
+
+% subsubsection Agissons sur la fonte (end)
+
+\subsubsection{Alignements} % (fold)
+\label{ssub:Alignements}
+
+Il est bon de savoir que \LaTeX{} justifie le texte par défaut. Il existe 3 {\bf environnements} pour justifier le texte :
+\begin{itemize}
+    \item {\verb flushright }
+    \item {\verb center }
+    \item {\verb flushleft }
+\end{itemize}
+
+Vous aurez, je pense compris que le premier aligne à droite, le second au centre, le troisème à droite.
+
+Ces environnements s'utilisent comme tous les autres (que nous verons juste après) :
+\begin{verbatim}
+    \begin{environnement}
+        texte dans l'environnement
+    \end{environnement}
+\end{verbatim}
+
+Si je fais :
+\begin{verbatim}
+    \begin{center}
+        She sells sea shells on the seashore.
+    \end{center}
+\end{verbatim}
+
+Ça donne :
+    \begin{center}
+        She sells sea shells on the seashore.
+    \end{center}
+
+% subsubsection Alignements (end)
+
+\subsection{Environnements} % (fold)
+\label{sub:Environnements}
+
+Voilà quelques autres environnements utiles.
+
+Comme précédement, ces environnements s'appellent via :
+
+\begin{verbatim}
+    \begin{environnement}
+        texte dans l'environnement
+    \end{environnement}
+\end{verbatim}
+
+\subsubsection{Verse} % (fold)
+\label{ssub:Verse}
+
+L'environnement {\verb verse } permet la mise en page de poèmes :
+
+\begin{verse}
+    Horloge ! dieu sinistre, effrayant, impassible,\\
+    Dont le doigt nous menace et nous dit: « Souviens-toi !\\
+    Les vibrantes Douleurs dans ton cœur plein d’effroi\\
+    Se planteront bientôt comme dans une cible ;\\
+    \bigskip
+    Le Plaisir vaporeux fuira vers l’horizon\\
+    Ainsi qu’une sylphide au fond de la coulisse ;\\
+    Chaque instant te dévore un morceau du délice\\
+    À chaque homme accordé pour toute sa saison.\\
+
+    \bigskip
+    Trois mille six cents fois par heure, la Seconde\\
+    Chuchote : Souviens-toi ! — Rapide, avec sa voix\\
+    D’insecte, Maintenant dit : Je suis Autrefois,\\
+    Et j’ai pompé ta vie avec ma trompe immonde !\\
+
+    \bigskip
+    Remember ! Souviens-toi, prodigue ! Esto memor !\\
+    (Mon gosier de métal parle toutes les langues.)\\
+    Les minutes, mortel folâtre, sont des gangues\\
+    Qu’il ne faut pas lâcher sans en extraire l’or !\\
+
+    \bigskip
+    Souviens-toi que le Temps est un joueur avide\\
+    Qui gagne sans tricher, à tout coup ! c’est la loi.\\
+    Le jour décroît ; la nuit augmente; souviens-toi !\\
+    Le gouffre a toujours soif ; la clepsydre se vide.\\
+
+    \bigskip
+    Tantôt sonnera l’heure où le divin Hasard,\\
+    Où l’auguste Vertu, ton épouse encor vierge,\\
+    Où le Repentir même (oh ! la dernière auberge !),\\
+    Où tout te dira : Meurs, vieux lâche ! il est trop tard ! »
+\end{verse}
+
+(pour les incultes, ce poème de Baudelaire est paru dans \underline{Les Fleurs du Mal}, il s'intitule {\it L'Horloge})
+
+% subsubsection Verse (end)
+
+\subsubsection{Quotation/Quote} % (fold)
+\label{ssub:Quotation/Quote}
+
+Cet environnement met en forme les citations :
+
+\begin{verbatim}
+    \begin{quotation}
+        Ils ne savaient pas que c'était impossible alors ils l'ont fait.
+    \end{quotation}
+    \begin{quote}
+        Ils ne savaient pas que c'était impossible alors ils l'ont fait.
+    \end{quote}
+\end{verbatim}
+
+\begin{quotation}
+    Ils ne savaient pas que c'était impossible alors ils l'ont fait.
+\end{quotation}
+\begin{quote}
+    Ils ne savaient pas que c'était impossible alors ils l'ont fait.
+\end{quote}
+
+Le deuxième ({\verb quote }) s'adapte mieux aux citations courtes alors que l'autre ({\verb quotation }) convient aux paragraphes complets.
+
+% subsubsection Quotation/Quote (end)
+
+\subsubsection{Verbatim} % (fold)
+\label{ssub:Verbatim}
+
+Un environnement dont j'abuse dans ce document est l'environnement {\verb verbatim } et son pendant {\it inline } {\verb \verb }.
+
+Ces environnements permettent la mise en forme de code (même \LaTeX, ce document en est la preuve).
+
+Voilà un exemple :
+
+\begin{verbatim}
+    L'environnement {\verb verbatim } permet la
+    présentation et l'inclusion de code source.
+\end{verbatim}
+
+    L'environnement {\verb verbatim } permet la présentation et l'inclusion de code source.
+
+{\verb verbatim } s'utilise comme n'importe quel autre environnement \LaTeX.
+
+
+% subsubsection Verbatim (end)
+
+% subsection Environnements (end)
+
+\subsubsection{Listes} % (fold)
+\label{ssub:Listes}
+
+Il est bien évidement possible de créer des listes.
+
+Avant tout, il est bon de savoir que les listes peuvent être de trois types :
+
+\begin{itemize}
+    \item Liste non-ordonnée (comme celle-ci)
+    \item Liste ordonnée
+    \item Liste associative
+\end{itemize}
+
+\paragraph{Liste non-ordonnée} % (fold)
+\label{par:Liste non-ordonnée}
+
+c'est la plus simple des listes.
+L'environnement utilisé est {\verb itemize }.
+chaque élément doit être précédé de {\verb \item }, comme dans l'exemple ci dessous : 
+
+\begin{itemize}
+    \item oui
+    \item non
+    \item avec les palmes
+    \item sans les palmes
+\end{itemize}
+
+\begin{verbatim}
+    \begin{itemize}
+        \item oui
+        \item non
+        \item avec les palmes
+        \item sans les palmes
+    \end{itemize}
+\end{verbatim}
+
+% paragraph Liste non-ordonnée (end)
+
+\paragraph{Liste ordonnée} % (fold)
+\label{par:Liste ordonnée}
+
+Elle est très proche de la première.
+La différence réside dans le fait que les éléments soient cette fois numérotés.
+
+L'environnement utilisé est {\verb enumerate }.
+chaque élément doit être précédé de {\verb \item }, comme dans l'exemple ci dessous : 
+
+\begin{enumerate}
+    \item oui
+    \item non
+    \item avec les palmes
+    \item sans les palmes
+\end{enumerate}
+
+\begin{verbatim}
+    \begin{enumerate}
+        \item oui
+        \item non
+        \item avec les palmes
+        \item sans les palmes
+    \end{enumerate}
+\end{verbatim}
+
+% paragraph Liste ordonnée (end)
+
+\paragraph{Liste associative} % (fold)
+\label{par:Liste associative}
+
+Ces listes présentent des couples clé-valeur.
+
+L'environnement utilisé est {\verb description }.
+Chaque couple est formaté comme ceci :
+
+\begin{verbatim}
+    \item[clé] valeur
+\end{verbatim}
+
+Comme d'habitude, voici un petit exemple :
+
+\begin{description}
+    \item[Linux] Yeah !
+    \item[BSD] Pas mal non plus o/
+    \item[MacOS] Un truc avec des vrais morceaux d'iPapy dedans
+    \item[Windows] Argh.... (sic)
+\end{description}
+
+\begin{verbatim}
+    \begin{description}
+        \item[Linux] Yeah !
+        \item[BSD] Pas mal non plus o/
+        \item[MacOS] Un truc avec des vrais morceaux d'iPapy dedans
+        \item[Windows] Argh.... (sic)
+    \end{description}
+\end{verbatim}
+% paragraph Liste associative (end)
+
+% subsubsection Listes (end)
+
+% subsection Mise en forme particulière (end)
+
+On a plus ou moins fait le tour des bases de \LaTeX.
+Ce que vous savez vous permettra de faire pas mal de choses, et pour le reste, il y a la fin de ce document...
+
+% section Les bases (end)

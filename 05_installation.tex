@@ -1,0 +1,137 @@
+\section{Installation} % (fold)
+\label{sec:Installation}
+
+Avant de taper quoi que ce soit, il va nous falloir des outils :
+\begin{itemize}
+    \item De quoi taper nos {\verb .tex }
+    \item De quoi transformer nos {\verb .tex } en {\verb .pdf }/{\verb .ps }
+    \item De quoi créer de jolies images en {\verb .png },{\verb .eps } ou {\verb .tex }
+\end{itemize}
+
+Dans ce document, je vais relativement peu détailler l'installation de ces programmes pour des raisons évidentes :
+\begin{description}
+    \item[Linux] Les gestionnaires de paquets proposent en général le paquet {\verb texlive } qui est largement suffisant
+    \item[Windows] En dehors de mes considérations éthiques je sais que des installations portables de \LaTeX{} se trouvent sur le web. Chacun connait le fonctionnement standard d'une installation windows : {\itshape Suivant - Suivant - Suivant - Suivant - Terminer}...
+    \item[Mac] Je ne connais que peu ce système et pour autant que je le sache, on trouve sans mal le pendant mac des outils linux.
+\end{description}
+
+\subsection{Taper !!} % (fold)
+\label{sub:Taper !!}
+
+Autant vous le dire tout de suite, taper du \TeX/\LaTeX{} n'a strictement rien de sorcier. Le plus débile des éditeurs de texte fera l'affaire !
+
+\begin{quotation}
+    {\bfseries Je peux utiliser LibreOffice alors ?}
+
+    Nein !!! LibreOffice (il en va de même pour OpenOffice.org ou MSOffice) n'est {\bfseries pas} un éditeur de texte !
+    Quand je parle d'{\itshape éditeur de texte} je parle de vi(m), emacs, notepad(++), leafpad, gedit, etc...
+\end{quotation}
+
+Si vous comptez pousser une peu votre utilisation de \LaTeX, je vous conseille quand même d'en choisir un bon ou de vous rabattre sur un logiciel fait pour comme un de ceux de la liste suivante :
+
+\begin{itemize}
+    \item vi ou vim
+    \item emacs + plugin auctex
+    \item kyle
+    \item bluefish
+    \item \TeX nicCenter
+    \item TexMaker (windows)
+    \item etc...
+\end{itemize}
+
+Ma préférence va de loin à vim, mais c'est un choix purement personnel.
+
+% subsection Taper !! (end)
+
+\subsection{Compiler !} % (fold)
+\label{sub:Compiler !}
+
+Super ! On a de quoi taper nos docs.
+
+Reste maintenant à transformer tout ça en jolis documents...
+
+Nous allons installer ce qu'on appelle une {\itshape distribution \LaTeX}.
+Il faut avant tout savoir que ces distros sont particulièrement lourdes (plusieurs centaines de mégaoctets), et ce quelque soit votre système.
+
+\subsubsection{Linux} % (fold)
+\label{ssub:Linux}
+
+Sous linux, l'installation est relativement aisée, je vais la présenter ici pour ubuntu/debian, mais elle est bien évidement transposable à n'importe quelle autre distribution (adaptez juste l'appel au gestionnaire de paquet).
+
+Je tiens à préciser que les noms de paquets (et les intitulés) ont été largement inspiré de la page dédiée du wiki ubuntu-fr\footnote{Voilà ladite page : \url{http://doc.ubuntu-fr.org/latex}}.
+
+Pour l'installation du minimum requis :
+\begin{verbatim}
+    $ sudo apt-get install texlive
+\end{verbatim}
+
+Pour le support de la langue française :
+\begin{verbatim}
+    $ sudo apt-get install texlive-lang-french
+\end{verbatim}
+
+L'installation de quelques paquets bien utiles :
+\begin{verbatim}
+    $ sudo apt-get install texlive-latex-extra
+\end{verbatim}
+
+L'installation complète ({\bfseries attention, c'est énorme}) :
+\begin{verbatim}
+    $ sudo apt-get install texlive-full
+\end{verbatim}
+
+Une fois que l'installation est faite, il suffira d'un petit 
+
+\begin{verbatim}
+    $ pdflatex doc.tex
+\end{verbatim}
+
+pour transformer le fichier {\verb doc.tex } en {\verb doc.pdf }.
+
+% subsubsection Linux (end)
+
+\subsubsection{Windows} % (fold)
+\label{ssub:Windows}
+
+Je n'ai {\itshape jamais} essayé d'installer \LaTeX{} sous Windows.
+
+Les solutions que je vais vous proposer utilisent la distribution MiK\TeX{} qui est entièrement gratuite.
+
+J'ai toutefois récupéré ce how-to qui vous explique les choses comme je l'aurais fait (Téléchargez, Intallez)  :
+
+\begin{center}
+    \url{http://www.apprendre-latex.images-en-france.fr/installer-latex-windows.html}
+\end{center}
+
+L'autre moyen, est d'utiliser la distribution portable USB\TeX.
+Pour faire simple, c'est une distribution \LaTeX{} classique avec tout les logiciels nécessaires portabiliés pour pouvoir tourner sur une clé USB.
+Bien entendu, vous pouvez vous contenter de l'installer sur votre PC, et non sur une clé !
+
+Quelque soit l'option que vous avez choisi, l'écriture et la génération des fichiers de sortie passera par les éditeurs \TeX nicCenter ou \TeX Maker qui sont inclus.
+
+L'utilisation de l'invite de commande de microsoft est tellement atroce que je ne m'attarderais pas dessus, même si la génération de docs en passant par la ne doit pas être bien sorcière...
+
+% subsubsection Windows (end)
+
+\subsubsection{Mac} % (fold)
+\label{ssub:Mac}
+
+Là encore, je n'ai jamais essayé mais je connais de nom la distribution Mac\TeX.
+
+Pour faire au plus simple, je vous conseille de vous reporter à un tutoriel sur internet ou dans un bouquin.
+Si vraiment l'utilisation d'un moteur de recherche vous donne des boutons, essayez celui là :
+
+\begin{center}
+    \url{http://www.valhalla.fr/2007/10/08/latex-sur-mac-installation/}
+\end{center}
+
+Il est un peu vieux, mais je ne vois pas de raison pour qu'il ne fonctionne plus.
+
+% subsubsection Mac (end)
+
+% subsection Compiler ! (end)
+
+Youpi ! Que vous soyez sous linux, mac ou windows, vous devez désormais avoir accès à une distribution \LaTeX fonctionnelle.
+On va donc pouvoir passer aux choses sérieuses.
+
+% section Installation (end)
